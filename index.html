@@ -3,9 +3,235 @@
 <head>
   <meta charset="UTF-8" />
   <title>Bleibe-Check – Der Mini-Test zum Bleibebarometer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 2em;
+      background-color: #ffffff;
+      color: #1a1a1a;
+    }
+    h1 {
+      color: #005f73;
+    }
+    .question, .level-select {
+      margin-bottom: 1.5em;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+    select, input[type=radio] {
+      margin-top: 0.3em;
+      padding: 0.4em;
+      font-size: 1em;
+    }
+    .radio-group {
+      display: flex;
+      gap: 1em;
+      margin-top: 0.5em;
+    }
+    button {
+      background-color: #005f73;
+      color: white;
+      border: none;
+      padding: 0.7em 1.4em;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 1em;
+      margin-right: 1em;
+    }
+    #results {
+      margin-top: 2em;
+      padding: 1.5em;
+      background: #e0f0ff;
+      border-left: 5px solid #0a9396;
+    }
+    .result-item {
+      margin-bottom: 1em;
+      padding: 1em;
+      background: #f2f2f2;
+      border-left: 4px solid #005f73;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #0a9396;
+    }
+    .intro {
+      background: #f0fdfd;
+      border-left: 4px solid #0a9396;
+      padding: 1em;
+      margin-bottom: 2em;
+    }
+  </style>
 </head>
 <body>
-  <h1>Bleibe-Check</h1>
-  <p>Dies ist ein gekürzter Demo-Inhalt.</p>
+
+<h1>Bleibe-Check – Der Mini-Test zum Bleibebarometer</h1>
+<div class="intro">
+  <p>Wie hoch ist das Wechselrisiko in Ihrer Verwaltung? Beantworten Sie 8 kurze Fragen – und vergleichen Sie Ihre Einschätzungen mit den Ergebnissen von über 7.000 Teilnehmer:innen aus dem <strong>Bleibebarometer Öffentlicher Dienst</strong>.</p>
+</div>
+
+<form id="checkForm">
+  <div class="level-select">
+    <label>Auf welcher Verwaltungsebene sind Sie tätig?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="level" value="bund" required> Bundesebene</label>
+      <label><input type="radio" name="level" value="land"> Landesebene</label>
+      <label><input type="radio" name="level" value="kommune"> Kommunalebene</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <label>1. Ich sehe in meiner Organisation klare Möglichkeiten, mich beruflich weiterzuentwickeln.</label>
+    <select name="q1" required>
+      <option value="">Bitte auswählen</option>
+      <option value="1">Stimme gar nicht zu</option>
+      <option value="2">Stimme weniger zu</option>
+      <option value="3">Unentschieden</option>
+      <option value="4">Stimme eher zu</option>
+      <option value="5">Stimme voll zu</option>
+    </select>
+  </div>
+  <div class="question">
+    <label>2. Ich kann mir vorstellen, langfristig in meiner derzeitigen Organisation zu bleiben.</label>
+    <select name="q2" required>
+      <option value="">Bitte auswählen</option>
+      <option value="1">Stimme gar nicht zu</option>
+      <option value="2">Stimme weniger zu</option>
+      <option value="3">Unentschieden</option>
+      <option value="4">Stimme eher zu</option>
+      <option value="5">Stimme voll zu</option>
+    </select>
+  </div>
+  <div class="question">
+    <label>3. Ich bin mit meiner beruflichen Situation insgesamt zufrieden.</label>
+    <select name="q3" required>
+      <option value="">Bitte auswählen</option>
+      <option value="1">Stimme gar nicht zu</option>
+      <option value="2">Stimme weniger zu</option>
+      <option value="3">Unentschieden</option>
+      <option value="4">Stimme eher zu</option>
+      <option value="5">Stimme voll zu</option>
+    </select>
+  </div>
+  <div class="question">
+    <label>4. Ich habe das Gefühl, dass meine Arbeit einen sinnvollen Beitrag leistet.</label>
+    <select name="q4" required>
+      <option value="">Bitte auswählen</option>
+      <option value="1">Stimme gar nicht zu</option>
+      <option value="2">Stimme weniger zu</option>
+      <option value="3">Unentschieden</option>
+      <option value="4">Stimme eher zu</option>
+      <option value="5">Stimme voll zu</option>
+    </select>
+  </div>
+  <div class="question">
+    <label>5. Ich erhalte ausreichend Unterstützung von meiner Führungskraft.</label>
+    <select name="q5" required>
+      <option value="">Bitte auswählen</option>
+      <option value="1">Stimme gar nicht zu</option>
+      <option value="2">Stimme weniger zu</option>
+      <option value="3">Unentschieden</option>
+      <option value="4">Stimme eher zu</option>
+      <option value="5">Stimme voll zu</option>
+    </select>
+  </div>
+  <div class="question">
+    <label>6. Ich empfinde die Kommunikation in meiner Organisation als offen und transparent.</label>
+    <select name="q6" required>
+      <option value="">Bitte auswählen</option>
+      <option value="1">Stimme gar nicht zu</option>
+      <option value="2">Stimme weniger zu</option>
+      <option value="3">Unentschieden</option>
+      <option value="4">Stimme eher zu</option>
+      <option value="5">Stimme voll zu</option>
+    </select>
+  </div>
+  <div class="question">
+    <label>7. Ich habe genügend Gestaltungsspielraum in meiner täglichen Arbeit.</label>
+    <select name="q7" required>
+      <option value="">Bitte auswählen</option>
+      <option value="1">Stimme gar nicht zu</option>
+      <option value="2">Stimme weniger zu</option>
+      <option value="3">Unentschieden</option>
+      <option value="4">Stimme eher zu</option>
+      <option value="5">Stimme voll zu</option>
+    </select>
+  </div>
+  <div class="question">
+    <label>8. Ich bin mit den Möglichkeiten zur Vereinbarkeit von Beruf und Privatleben zufrieden.</label>
+    <select name="q8" required>
+      <option value="">Bitte auswählen</option>
+      <option value="1">Stimme gar nicht zu</option>
+      <option value="2">Stimme weniger zu</option>
+      <option value="3">Unentschieden</option>
+      <option value="4">Stimme eher zu</option>
+      <option value="5">Stimme voll zu</option>
+    </select>
+  </div>
+
+  <button type="button" onclick="calculateScore()">Auswertung anzeigen</button>
+  <button type="reset" onclick="resetResults()">Zurücksetzen</button>
+</form>
+
+<div id="results" style="display:none;"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const comparisonValues = {
+      bund: [34, 64, 73, 67, 71, 64, 70, 64],
+      land: [26, 62, 77, 65, 60, 66, 65, 58],
+      kommune: [24, 60, 84, 61, 54, 76, 63, 59]
+    };
+
+    window.calculateScore = function () {
+      const form = document.forms["checkForm"];
+      const level = form["level"].value;
+      if (!level) {
+        alert("Bitte wählen Sie eine Verwaltungsebene.");
+        return;
+      }
+      let total = 0;
+      let resultsHtml = "<h2>Ergebnis</h2>";
+      for (let i = 1; i <= 8; i++) {
+        const q = form["q" + i];
+        if (!q || !q.value) {
+          alert("Bitte beantworten Sie alle Fragen.");
+          return;
+        }
+        const val = parseInt(q.value);
+        total += val;
+        const percent = (val / 5 * 100).toFixed(0);
+        const ref = comparisonValues[level][i - 1];
+        resultsHtml += `
+          <div class="result-item">
+            <strong>Frage ${i}</strong><br>
+            ➤ Ihr Wert: <span class="highlight">${val} / 5 (${percent}%)</span><br>
+            ➤ Referenzwert (${level}): <span class="highlight">${ref}% Zustimmung</span>
+          </div>`;
+      }
+      const avg = total / 8;
+      let summary = "";
+      if (avg <= 2.5) {
+        summary = "🚨 <strong>Hohes Wechselrisiko:</strong> Ihre Antworten liegen insgesamt unter dem Durchschnitt.";
+      } else if (avg <= 3.5) {
+        summary = "⚠️ <strong>Mittleres Risiko:</strong> Ihre Werte entsprechen etwa dem Durchschnitt Ihrer Verwaltungsebene.";
+      } else {
+        summary = "✅ <strong>Geringes Risiko:</strong> Sie liegen in vielen Bereichen über dem Durchschnitt.";
+      }
+      document.getElementById("results").style.display = "block";
+      document.getElementById("results").innerHTML = "<p>" + summary + "</p>" + resultsHtml;
+    }
+
+    window.resetResults = function () {
+      document.getElementById("results").style.display = "none";
+      document.getElementById("results").innerHTML = "";
+    }
+  });
+</script>
+
 </body>
 </html>
